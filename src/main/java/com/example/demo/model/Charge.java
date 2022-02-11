@@ -16,9 +16,7 @@ import javax.persistence.*;
 public class Charge {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @JsonIgnore
     private Long id;
-    @JsonIgnore
     @OneToOne(cascade = CascadeType.MERGE, targetEntity = Organization.class)
     private Organization organization;
 }

@@ -5,6 +5,8 @@ import com.example.demo.model.Organization;
 import com.example.demo.service.ChargeService;
 import com.example.demo.service.OrganizationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,9 +31,9 @@ public class DemoController {
         return organizationService.getOrganizationByInn(inn);
     }
 
-    @GetMapping("/get-charges/{inn}")
-    public List<Charge> getAllChargesByOrgInn(@PathVariable String inn) {
-        return chargeService.getAllChargesByOrgInn(inn);
+    @GetMapping(value = "/get-charges/{inn}")
+    public ResponseEntity<List<Charge>> getAllChargesByOrgInn(@PathVariable String inn) {
+        return ResponseEntity.ok(chargeService.getAllChargesByOrgInn(inn));
     }
 
     @GetMapping("/get-organization")
